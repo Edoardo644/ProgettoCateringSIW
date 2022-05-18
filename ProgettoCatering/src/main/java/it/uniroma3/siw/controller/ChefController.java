@@ -14,5 +14,17 @@ public class ChefController {
 	@Autowired
 	ChefValidator chefValidator;
 	
-
+	/* ovviamente non ci sono solo le pagine per il piatto e il piatto form quindi poi andranno modificati i return e il path su cui trovare questa richiesta
+	@PostMapping("/chef")
+	//modelAttribute serve per associare questo oggetto con quello col nome specificato dentro il modello
+	public String addChef(@Valid @ModelAttribute("chef") Chef c,BindingResult bindingResult,Model model){
+		if(!bindingResult.hasErrors()) {
+			this.chefService.inserisci(c);
+			model.addAttribute("chef", model);
+			return "chef.html";
+			
+		}else {
+			return "chefForm.html";
+		}
+	}*/
 }

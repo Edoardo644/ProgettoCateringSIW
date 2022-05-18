@@ -23,6 +23,12 @@ public class Piatto {
 	public Long getId() {
 		return Id;
 	}
+	public List<Ingrediente> getIngredientiDelPiatto() {
+		return ingredientiDelPiatto;
+	}
+	public void setIngredientiDelPiatto(List<Ingrediente> ingredientiDelPiatto) {
+		this.ingredientiDelPiatto = ingredientiDelPiatto;
+	}
 	public void setId(Long id) {
 		Id = id;
 	}
