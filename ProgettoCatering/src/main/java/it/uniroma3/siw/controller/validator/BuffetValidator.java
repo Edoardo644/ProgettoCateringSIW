@@ -9,7 +9,7 @@ import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.model.Piatto;
 import it.uniroma3.siw.service.BuffetService;
 
-
+//si mette il component perché così posso usare il validator nelle altre classi con Autowired
 @Component
 public class BuffetValidator implements Validator {
 	
