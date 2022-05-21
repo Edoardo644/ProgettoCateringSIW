@@ -1,25 +1,25 @@
-package it.uniroma3.siw.controller.validator;
+package com.example.demo.controller.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import it.uniroma3.siw.model.Chef;
-import it.uniroma3.siw.model.Piatto;
-import it.uniroma3.siw.service.ChefService;
+import com.example.demo.model.Ingrediente;
+import com.example.demo.model.Piatto;
+import com.example.demo.service.IngredienteService;
 
 
 @Component
-public class ChefValidator implements Validator {
+public class IngredienteValidator implements Validator {
 	
 	@Autowired
-	ChefService chefService;
+	IngredienteService ingredienteService;
 	
 	@Override
 	public void validate(Object o, Errors errors) {
-		if(this.chefService.alreadyExists((Chef) o)) {
-			errors.reject("chef.duplicato");
+		if(this.ingredienteService.alreadyExists((Ingrediente) o)) {
+			errors.reject("ingrediente.duplicato");
 		}
 	}
 	

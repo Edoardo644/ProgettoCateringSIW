@@ -1,10 +1,10 @@
-package it.uniroma3.siw.controller;
+package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import it.uniroma3.siw.controller.validator.BuffetValidator;
-import it.uniroma3.siw.service.BuffetService;
+import com.example.demo.controller.validator.BuffetValidator;
+import com.example.demo.service.BuffetService;
 
 @Controller
 public class BuffetController {
