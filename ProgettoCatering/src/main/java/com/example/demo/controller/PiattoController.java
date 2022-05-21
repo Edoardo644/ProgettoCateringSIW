@@ -1,4 +1,4 @@
-package it.uniroma3.siw.controller;
+package com.example.demo.controller;
 
 import javax.validation.Valid;
 
@@ -9,9 +9,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import it.uniroma3.siw.controller.validator.PiattoValidator;
-import it.uniroma3.siw.model.Piatto;
-import it.uniroma3.siw.service.PiattoService;
+import com.example.demo.controller.validator.PiattoValidator;
+import com.example.demo.model.Piatto;
+import com.example.demo.service.PiattoService;
 
 @Controller
 public class PiattoController {

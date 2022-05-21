@@ -1,12 +1,12 @@
-package it.uniroma3.siw.service;
+package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import it.uniroma3.siw.model.Ingrediente;
-import it.uniroma3.siw.model.Piatto;
-import it.uniroma3.siw.repository.PiattoRepository;
+import com.example.demo.model.Ingrediente;
+import com.example.demo.model.Piatto;
+import com.example.demo.repository.PiattoRepository;
 
 @Service
 public class PiattoService {

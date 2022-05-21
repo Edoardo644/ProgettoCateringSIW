@@ -1,8 +1,8 @@
-package it.uniroma3.siw.repository;
+package com.example.demo.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import it.uniroma3.siw.model.Chef;
+import com.example.demo.model.Chef;
 
 public interface ChefRepository extends CrudRepository<Chef,Long> {
 	

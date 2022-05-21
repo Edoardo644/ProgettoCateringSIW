@@ -1,4 +1,4 @@
-package it.uniroma3.siw.model; 
+package com.example.demo.model; 
 import java.util.List;
 
 import javax.persistence.CascadeType;

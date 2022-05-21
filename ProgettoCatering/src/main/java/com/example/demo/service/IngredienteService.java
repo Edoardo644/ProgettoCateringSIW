@@ -1,12 +1,12 @@
-package it.uniroma3.siw.service;
+package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import it.uniroma3.siw.model.Chef;
-import it.uniroma3.siw.model.Ingrediente;
-import it.uniroma3.siw.repository.IngredienteRepository;
+import com.example.demo.model.Chef;
+import com.example.demo.model.Ingrediente;
+import com.example.demo.repository.IngredienteRepository;
 
 @Service
 public class IngredienteService {
