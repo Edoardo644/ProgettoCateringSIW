@@ -1,9 +1,17 @@
 package it.uniroma3.siw.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.controller.validator.BuffetValidator;
+import it.uniroma3.siw.model.Buffet;
 import it.uniroma3.siw.service.BuffetService;
 
 @Controller
@@ -21,9 +29,30 @@ public class BuffetController {
 			this.buffetService.inserisci(b);
 			model.addAttribute("buffet", model);
 			return "buffet.html";
-			
+
 		}else {
 			return "buffetForm.html";
 		}
 	}*/
+
+	@PostMapping("/buffet")
+	public String addBuffet(@Valid @ModelAttribute("buffet") Buffet b,BindingResult bindingResult,Model model){
+		this.buffetValidator.validate(b, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.buffetService.inserisci(b);
+			model.addAttribute("buffet", model);
+			return "buffet.html";
+
+		}else {
+			return "buffetForm.html";
+		}
+	}
+	
+	@GetMapping("/buffetForm")
+	public String getBuffetForm(Model model) {
+		model.addAttribute("buffet", new Buffet());
+		return "buffetForm.html";
+	}
 }
+
+
