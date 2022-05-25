@@ -59,4 +59,9 @@ public class BuffetController {
 		model.addAttribute("buffet", new Buffet());
 		return "buffetForm.html";
 	}
+	
+	@GetMapping("/buffet")
+	public String getPaginaBuffet(){
+		return "buffet.html";
+	}
 }
