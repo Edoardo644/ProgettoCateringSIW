@@ -1,0 +1,42 @@
+<div id="Operazioni">
+    <h2>Operazioni Possibili Da Amministratore</h2>
+    <div class="card text-center">
+        <div class="card-body" >
+            <h4 class="card-title">
+                Inserisci Buffet
+            </h4>
+           
+            <a th:href="@{/buffetForm}" class="btn btn-success m-3" >
+                INSERIMENTO
+            </a>
+            <div class="mb-3">
+                <p class="card-text">Cliccando avrai accesso a una form dove potrai inserire 
+                    nome e descrizione di un buffet 
+                </p>
+            </div>
+            <h4 class="card-title">
+                Modifica Buffet
+            </h4>
+            <a th:href="@{/buffet}" class="btn btn-warning m-3" >
+                MODIFICA
+            </a>
+                <div>
+                    <p class="card-text">Cliccando avrai accesso ai buffet e alle operazioni di modifica o cancellazione  </p>
+                </div>
+        </div>
+
+        <span class="card-body">
+            <a th:href="@{/buffet}">
+                Buffets
+            </a>
+            <div>
+                <h4 class="card-title">Card Title</h4>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, perspiciatis.</p>
+            </div>
+        </span>
+        <span class="card-body"><a th:href="@{/piattoForm}">Inserisci Piatto</a></span>
+        <span class="card-body"><a th:href="@{/chefForm}">Inserisci Chef</a></span>
+        <span class="card-body"><a th:href="@{/ingredientiForm}">Inserisci Ingredienti</a></span>
+        <div><a th:href="@{/persona}"></a></div>
+    </div>
+</div>
