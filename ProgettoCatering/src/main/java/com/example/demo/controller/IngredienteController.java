@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.controller.validator.IngredienteValidator;
 import com.example.demo.service.IngredienteService;
@@ -28,5 +29,10 @@ public class IngredienteController {
 			return "ingredienteForm.html";
 		}
 	}*/
+	
+	@GetMapping("/ingredienti")
+	public String getPaginaIngredienti(){
+		return "ingrediente.html";
+	}
 
 }

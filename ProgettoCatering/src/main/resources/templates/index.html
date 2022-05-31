@@ -14,11 +14,13 @@
 
     <!-- Custom styles -->
     <link href="../templates/css/carousel.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../templates/css/colours.css">
   </head>
   <body>
 
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <header >
+      <nav id="BG" class="navbar navbar-expand-md navbar-dark fixed-top">
         <a class="navbar-brand" href="#">Catering</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -39,7 +41,7 @@
             </li>
           </ul>
          
-            <button class="btn btn-outline-success my-2 my-sm-0" type="login" th:href="@{/login}">Login</button>
+            <button class="btn btn-outline my-2 my-sm-0" style="background-color: #ab9eb5;" type="login" th:href="@{/login}">Login</button>
         </div>
       </nav>
     </header>
@@ -59,7 +61,7 @@
               <div class="carousel-caption text-left">
                 <h1>Example headline.</h1>
                 <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                <p class="opacity-50"><a class=" buttons btn btn-lg btn-outline" href="#" role="button">Sign up today</a></p>
               </div>
             </div>
           </div>
@@ -69,7 +71,7 @@
               <div class="carousel-caption">
                 <h1>Another example headline.</h1>
                 <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                <p><a class="btn btn-lg btn-secondary buttons" href="#" role="button">Learn more</a></p>
               </div>
             </div>
           </div>
@@ -79,7 +81,7 @@
               <div class="carousel-caption text-right">
                 <h1>One more for good measure.</h1>
                 <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                <p><a class="btn btn-lg btn-outline-secondary buttons" href="#" role="button">Browse gallery</a></p>
               </div>
             </div>
           </div>
