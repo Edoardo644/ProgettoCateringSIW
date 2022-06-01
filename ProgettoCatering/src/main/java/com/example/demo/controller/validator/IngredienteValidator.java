@@ -25,7 +25,7 @@ public class IngredienteValidator implements Validator {
 	
 	@Override
 	public boolean supports(Class<?> aClass) {
-		return Piatto.class.equals(aClass);
+		return Ingrediente.class.equals(aClass);
 	}
 
 }

@@ -11,5 +11,22 @@
   </head>
   <body>
     <h2>Buffet Page</h2>
+
+    <div>
+        <div>
+          <span th:text="${buffet.nome}">
+            Paolo
+          </span>
+          <span th:text="${buffet.descr}">
+            Rossi
+          </span>
+          <div>
+            <button type="button">
+              <a th:href="@{/deleteBuffet(buffetId=${buffet.id})}">Elimina</a>
+            </button>
+          </div>
+        </div>
+    </div>
+    <footer><a href="/">Home</a></footer>
 </body>
 </html>

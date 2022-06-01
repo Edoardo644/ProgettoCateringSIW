@@ -63,7 +63,12 @@ public class Buffet {
 	}
 	
 	
-	
+	@Override
+	public boolean equals(Object obj) {
+		Buffet buffet = (Buffet)obj;
+		return this.nome.equals(buffet.getNome()) && 
+				this.descr.equals(buffet.getDescr());
+	}
 	
 
 }

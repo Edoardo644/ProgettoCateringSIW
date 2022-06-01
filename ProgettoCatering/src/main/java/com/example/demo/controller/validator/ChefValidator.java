@@ -25,7 +25,7 @@ public class ChefValidator implements Validator {
 	
 	@Override
 	public boolean supports(Class<?> aClass) {
-		return Piatto.class.equals(aClass);
+		return Chef.class.equals(aClass);
 	}
 
 }

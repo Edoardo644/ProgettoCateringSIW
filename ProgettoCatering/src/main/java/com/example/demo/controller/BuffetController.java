@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.controller.validator.BuffetValidator;
 import com.example.demo.model.Buffet;
@@ -46,13 +50,22 @@ public class BuffetController {
 		this.buffetValidator.validate(b, bindingResult);
 		if (!bindingResult.hasErrors()) {
 			this.buffetService.inserisci(b);
-			model.addAttribute("buffet", model);
+			model.addAttribute("buffet", this.buffetService.search(b.getId()));
 			return "buffet.html";
 
 		} else {
 			return "buffetForm.html";
 		}
 	}
+	
+	// Richiede tutti i buffet
+		@GetMapping("/elencoBuffet")
+		public String getPersone(Model model) {
+			List<Buffet> elencoBuffet = this.buffetService.findAllBuffet();
+			model.addAttribute("elencoBuffet", elencoBuffet);
+			return "elencoBuffet.html";
+		}
+	
 
 	@GetMapping("/buffetForm")
 	public String getBuffetForm(Model model) {
@@ -60,8 +73,17 @@ public class BuffetController {
 		return "buffetForm.html";
 	}
 	
-	@GetMapping("/buffet")
-	public String getPaginaBuffet(){
+	
+	@GetMapping("/buffet/{id}")
+	public String getBuffet(@PathVariable("id") Long id, Model model){
+		Buffet buffet = this.buffetService.search(id);
+		model.addAttribute("buffet", buffet);
 		return "buffet.html";
 	}
+	
+	@GetMapping("/deleteBuffet")
+    public String deleteBuffet(@RequestParam Long buffetId) {
+        this.buffetService.rimuovi(buffetId);
+        return "redirect:/elencoBuffet";
+    }
 }

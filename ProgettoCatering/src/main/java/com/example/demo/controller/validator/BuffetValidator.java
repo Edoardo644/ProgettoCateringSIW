@@ -6,7 +6,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.example.demo.model.Buffet;
-import com.example.demo.model.Piatto;
 import com.example.demo.service.BuffetService;
 
 //si mette il component perché così posso usare il validator nelle altre classi con Autowired
@@ -25,7 +24,7 @@ public class BuffetValidator implements Validator {
 	
 	@Override
 	public boolean supports(Class<?> aClass) {
-		return Piatto.class.equals(aClass);
+		return Buffet.class.equals(aClass);
 	}
 
 }
