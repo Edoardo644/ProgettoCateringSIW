@@ -1,9 +1,13 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.model.Buffet;
 import com.example.demo.model.Ingrediente;
 import com.example.demo.model.Piatto;
 import com.example.demo.repository.PiattoRepository;
@@ -19,11 +23,7 @@ public class PiattoService {
 	
 	
 	public boolean alreadyExists(Piatto p) {
-		if(piattoRepository.findByNome(p.getNome())!=null)
-			return true;
-		return false;
-			
-		
+		return this.findAllPiatti().contains(p);
 	}
 	
 	@Transactional
@@ -45,5 +45,13 @@ public class PiattoService {
 	@Transactional
 	public void clear() {
 		this.piattoRepository.deleteAll();
+	}
+	
+	public List<Piatto> findAllPiatti(){
+		List<Piatto> elencoPiatti = new ArrayList<Piatto>();
+		for (Piatto p : this.piattoRepository.findAll()) {
+			elencoPiatti.add(p);
+		}
+		return elencoPiatti;
 	}
 }

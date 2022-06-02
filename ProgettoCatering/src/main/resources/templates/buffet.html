@@ -24,6 +24,19 @@
             <button type="button">
               <a th:href="@{/deleteBuffet(buffetId=${buffet.id})}">Elimina</a>
             </button>
+            <button type="button">
+              <a th:href="@{/showUpdateForm(buffetId=${buffet.id})}" class="btn btn-info">Update</a>
+            </button>
+          </div>
+          
+          <div>
+            <ul>
+              <li th:each="piatto : ${elencoPiatti}">
+                <a href="piatto.html" class ="link"
+                  th:href="@{'/piatto' + '/' + ${piatto.id}}"
+                  th:text="${piatto.nome} + ' ' + ${piatto.descr}">Carbonara</a>
+              </li>
+            </ul>
           </div>
         </div>
     </div>

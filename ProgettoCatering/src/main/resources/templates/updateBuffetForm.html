@@ -5,7 +5,7 @@
         <title>Inserimento Buffet</title>
     </head>
     <body>
-        <form th:action="@{/buffet}" method="POST" th:object="${buffet}">
+        <form th:action="@{/updateBuffet}" method="POST" th:object="${buffet}">
             <div th:if="${#fields.hasGlobalErrors()}">
                 <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
             </div>
@@ -18,9 +18,7 @@
                 <span><input type="text" th:field="*{descr}" /></span>
                 <span th:if="${#fields.hasErrors('descr')}" th:errors="*{descr}"></span>
             </div>
-            
             <div><button type="submit">Submit</button></div>
         </form>
-       
     </body>
 </html>

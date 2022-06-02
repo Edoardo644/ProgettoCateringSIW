@@ -36,7 +36,7 @@ public class BuffetService {
 		this.buffetRepository.deleteAll();
 	}
 	
-	public Buffet search(Long id) {
+	public Buffet searchById(Long id) {
 		return this.buffetRepository.findById(id).get();
 	}
 	
