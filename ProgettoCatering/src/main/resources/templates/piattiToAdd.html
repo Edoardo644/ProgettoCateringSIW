@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Elenco Buffet</title>
+	<link href="/style.css" rel="stylesheet">
+</head>
+<body>
+	<h4>Elenco Piatti Da Aggiungere</h4>
+	<ul>
+	<li th:each="piatto : ${elencoPiatti}">
+		<a href="piatto.html" class ="link"
+			th:href="@{'/piatto' + '/' + ${piatto.id}}"
+			th:text="${piatto.nome} + ' ' + ${piatto.descr}">
+            Paolo Rossi
+        </a>
+        <button type="button"> 
+            <a th:href="@{/buffet/addPiattoABuffet(piattoId=${piatto.id})}">
+                Aggiungi
+            </a>
+        </button>
+	</li>
+	</ul>
+
+</body>
+</html>

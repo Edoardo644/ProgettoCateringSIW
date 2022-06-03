@@ -38,13 +38,21 @@ public class PiattoService {
 	}
 	
 	@Transactional
-	public void rimuovi(Piatto piatto) {
-		this.piattoRepository.delete(piatto);
+	public void rimuovi(Long Id) {
+		this.piattoRepository.deleteById(Id);
 	}
 	
 	@Transactional
 	public void clear() {
 		this.piattoRepository.deleteAll();
+	}
+	
+	public Piatto searchById(Long id) {
+		return this.piattoRepository.findById(id).get();
+	}
+	
+	public Piatto searchByNome(String nome) {
+		return this.piattoRepository.findByNome(nome);
 	}
 	
 	public List<Piatto> findAllPiatti(){

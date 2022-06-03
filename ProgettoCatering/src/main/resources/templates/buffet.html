@@ -31,12 +31,20 @@
           
           <div>
             <ul>
-              <li th:each="piatto : ${elencoPiatti}">
+              <li th:each="piatto : ${elencoPiattiBuffet}">
                 <a href="piatto.html" class ="link"
                   th:href="@{'/piatto' + '/' + ${piatto.id}}"
                   th:text="${piatto.nome} + ' ' + ${piatto.descr}">Carbonara</a>
               </li>
             </ul>
+          </div>
+
+          <div>
+            <button type="button"> 
+              <a th:href="@{/buffet/showPiattiToAdd(buffetId=${buffet.id})}">
+                  Aggiungi un piatto al Buffet
+              </a>
+            </button>
           </div>
         </div>
     </div>

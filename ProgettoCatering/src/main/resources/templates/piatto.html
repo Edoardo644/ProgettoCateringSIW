@@ -11,5 +11,25 @@
   </head>
   <body>
       <h2>Piatto Page</h2>
+
+      <div>
+          <div>
+            <span th:text="${piatto.nome}">
+              Paolo
+            </span>
+            <span th:text="${piatto.descr}">
+              Rossi
+            </span>
+            <div>
+              <button type="button">
+                <a th:href="@{/deletePiatti(piattoId=${piatto.id})}">Elimina</a>
+              </button>
+              <button type="button">
+                <a th:href="@{/showUpdateForm(piattoId=${piatto.id})}" class="btn btn-info">Update</a>
+              </button>
+            </div>
+          </div>
+      </div>
+      <footer><a href="/">Home</a></footer>
   </body>
 </html>
