@@ -12,15 +12,11 @@ public class Ingrediente {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	
-	public Long getId() {
-		return Id;
-	}
-	public void setId(Long id) {
-		Id = id;
-	}
+	
 	private String nome;
 	private String origine;
 	private String descrizione;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -39,7 +35,12 @@ public class Ingrediente {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	
+	public Long getId() {
+		return Id;
+	}
+	public void setId(Long id) {
+		Id = id;
+	}
 	
 
 }

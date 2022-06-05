@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/base.html::headerfiles">
+<html>
+    <head>
         <link rel="stylesheet" href="../static/css/form.css">
+        <link rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+        crossorigin="anonymous" />
     </head>
 
     <body>
@@ -9,7 +13,7 @@
         <div class="container">
             <div class=" text-center mt-5 ">
         
-                <h1 >Inserimento Piatto</h1>
+                <h1 >Inserimento Buffet</h1>
             </div>
         
         
@@ -19,7 +23,7 @@
                 <div class="card-body bg-light">
            
                 <div class = "container">
-                <form id="contact-form" role="form" th:action="@{/piatto}" method="POST" th:object="${piatto}">
+                <form id="contact-form" role="form" th:action="@{/buffet}" method="POST" th:object="${buffet}">
                     <div th:if="${#fields.hasGlobalErrors()}">
                         <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
                     </div>
@@ -31,7 +35,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_name">Nome *</label>
-                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome del piatto *" required="required" th:field="*{nome}" >
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" th:field="*{nome}" >
                                 <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
                             </div>
                         </div>
@@ -50,7 +54,8 @@
         
                         <div class="col-md-12">
                             
-                            <input type="submit" class="btn btn-success btn-send  pt-2 btn-block" value="Submit Piatto" >
+                            <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
+                                " value="Send Message" >
                         
                     </div>
               

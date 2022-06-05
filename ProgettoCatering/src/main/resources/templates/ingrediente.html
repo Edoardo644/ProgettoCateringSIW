@@ -7,9 +7,32 @@
     <meta name="author" content="">
     <link rel="icon" href="../templates/css/favicon.ico">
 
-    <title>Ingredienti</title>
+    <title>Ingrediente</title>
   </head>
   <body>
-    <h2>Ingredienti Page</h2>
-</body>
+      <h2>Ingrediente Page</h2>
+
+      <div>
+          <div>
+            <span th:text="${ingrediente.nome}">
+              Paolo
+            </span>
+            <span th:text="${ingrediente.origine}">
+              Rossi
+            </span>
+            <span th:text="${ingrediente.descrizione}">
+              Rossi
+            </span>
+            <div>
+              <button type="button">
+                <a th:href="@{/deleteIngredienti(ingredienteId=${ingrediente.id})}">Elimina</a>
+              </button>
+              <button type="button">
+                <a th:href="@{/showUpdateForm(ingredienteId=${ingredienteid})}" class="btn btn-info">Update</a>
+              </button>
+            </div>
+          </div>
+      </div>
+      <footer><a href="/">Home</a></footer>
+  </body>
 </html>

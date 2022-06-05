@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.model.Chef;
 import com.example.demo.model.Ingrediente;
 import com.example.demo.repository.IngredienteRepository;
 
@@ -15,10 +17,8 @@ public class IngredienteService {
 	IngredienteRepository ingredienteRepository;
 	
 
-	public boolean alreadyExists(Ingrediente p) {
-		if(this.ingredienteRepository.findByNome(p.getNome())!=null)
-			return true;
-		return false;
+	public boolean alreadyExists(Ingrediente i) {
+		return this.findAllIngredienti().contains(i);
 	}
 	
 	@Transactional
@@ -27,12 +27,28 @@ public class IngredienteService {
 	}
 	
 	@Transactional
-	public void rimuovi(Ingrediente ingrediente) {
-		this.ingredienteRepository.delete(ingrediente);
+	public void rimuovi(Long Id) {
+		this.ingredienteRepository.deleteById(Id);
 	}
 	
 	@Transactional
 	public void clear() {
 		this.ingredienteRepository.deleteAll();
+	}
+	
+	public Ingrediente searchById(Long id) {
+		return this.ingredienteRepository.findById(id).get();
+	}
+	
+	public Ingrediente searchByNome(String nome) {
+		return this.ingredienteRepository.findByNome(nome);
+	}
+	
+	public List<Ingrediente> findAllIngredienti(){
+		List<Ingrediente> elencoIngredienti = new ArrayList<Ingrediente>();
+		for (Ingrediente i : this.ingredienteRepository.findAll()) {
+			elencoIngredienti.add(i);
+		}
+		return elencoIngredienti;
 	}
 }

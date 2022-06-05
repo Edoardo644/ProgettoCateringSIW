@@ -1,10 +1,21 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.controller.validator.IngredienteValidator;
+import com.example.demo.model.Ingrediente;
 import com.example.demo.service.IngredienteService;
 
 
@@ -16,23 +27,47 @@ public class IngredienteController {
 	@Autowired
 	IngredienteValidator ingredienteValidator;
 	
-	/* ovviamente non ci sono solo le pagine per il piatto e il piatto form quindi poi andranno modificati i return e il path su cui trovare questa richiesta
-	@PostMapping("/Ingrediente")
-	//modelAttribute serve per associare questo oggetto con quello col nome specificato dentro il modello
-	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente i,BindingResult bindingResult,Model model){
-		if(!bindingResult.hasErrors()) {
+	
+	@PostMapping("/ingrediente")
+	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente i, BindingResult bindingResult, Model model) {
+		this.ingredienteValidator.validate(i, bindingResult);
+		if (!bindingResult.hasErrors()) {
 			this.ingredienteService.inserisci(i);
-			model.addAttribute("ingrediente", model);
+			model.addAttribute("ingrediente", this.ingredienteService.searchById(i.getId()));
 			return "ingrediente.html";
-			
-		}else {
+
+		} else {
 			return "ingredienteForm.html";
 		}
-	}*/
-	
-	@GetMapping("/ingredienti")
-	public String getPaginaIngredienti(){
+	}
+
+	// Richiede tutti gli ingredienti
+	@GetMapping("/elencoIngredienti")
+	public String getAllIngredienti(Model model) {
+		List<Ingrediente> elencoIngredienti = this.ingredienteService.findAllIngredienti();
+		model.addAttribute("elencoIngredienti", elencoIngredienti);
+		return "elencoIngredienti.html";
+	}
+
+
+	@GetMapping("/ingredienteForm")
+	public String getIngredientiForm(Model model) {
+		model.addAttribute("ingrediente", new Ingrediente());
+		return "ingredienteForm.html";
+	}
+
+
+	@GetMapping("/ingrediente/{id}")
+	public String getIngrediente(@PathVariable("id") Long id, Model model){
+		Ingrediente ingrediente = this.ingredienteService.searchById(id);
+		model.addAttribute("ingrediente", ingrediente);
 		return "ingrediente.html";
+	}
+
+	@GetMapping("/deleteIngredienti")
+	public String deleteIngredienti(@RequestParam Long ingredienteId) {
+		this.ingredienteService.rimuovi(ingredienteId);
+		return "redirect:/elencoIngredienti";
 	}
 
 }

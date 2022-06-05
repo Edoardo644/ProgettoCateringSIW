@@ -10,6 +10,29 @@
     <title>Chef</title>
   </head>
   <body>
-    <h2>Chef Page</h2>
-</body>
+      <h2>Chef Page</h2>
+
+      <div>
+          <div>
+            <span th:text="${chef.nome}">
+              Paolo
+            </span>
+            <span th:text="${chef.cognome}">
+              Rossi
+            </span>
+            <span th:text="${chef.nazionalita}">
+              Italiano
+            </span>
+            <div>
+              <button type="button">
+                <a th:href="@{/deleteChef(chefId=${chef.id})}">Elimina</a>
+              </button>
+              <button type="button">
+                <a th:href="@{/showUpdateForm(chefId=${chef.id})}" class="btn btn-info">Update</a>
+              </button>
+            </div>
+          </div>
+      </div>
+      <footer><a href="/">Home</a></footer>
+  </body>
 </html>

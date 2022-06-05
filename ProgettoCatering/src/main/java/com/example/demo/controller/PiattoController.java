@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.controller.validator.PiattoValidator;
-import com.example.demo.model.Buffet;
 import com.example.demo.model.Piatto;
 import com.example.demo.service.PiattoService;
 
@@ -59,7 +58,7 @@ public class PiattoController {
 		this.piattoValidator.validate(p, bindingResult);
 		if (!bindingResult.hasErrors()) {
 			this.piattoService.inserisci(p);
-			model.addAttribute("buffet", this.piattoService.searchById(p.getId()));
+			model.addAttribute("piatto", this.piattoService.searchById(p.getId()));
 			return "piatto.html";
 
 		} else {
@@ -77,7 +76,7 @@ public class PiattoController {
 
 
 	@GetMapping("/piattoForm")
-	public String getBuffetForm(Model model) {
+	public String getPiattoForm(Model model) {
 		model.addAttribute("piatto", new Piatto());
 		return "piattoForm.html";
 	}

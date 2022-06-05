@@ -1,42 +1,46 @@
-<div id="Operazioni">
-    <h2>Operazioni Possibili Da Amministratore</h2>
-    <div class="card text-center">
-        <div class="card-body" >
-            <h4 class="card-title">
-                Inserisci Buffet
-            </h4>
-           
-            <a th:href="@{/buffetForm}" class="btn btn-success m-3" >
-                INSERIMENTO
-            </a>
-            <div class="mb-3">
-                <p class="card-text">Cliccando avrai accesso a una form dove potrai inserire 
-                    nome e descrizione di un buffet 
-                </p>
-            </div>
-            <h4 class="card-title">
-                Modifica Buffet
-            </h4>
-            <a th:href="@{/buffet}" class="btn btn-warning m-3" >
-                MODIFICA
-            </a>
-                <div>
-                    <p class="card-text">Cliccando avrai accesso ai buffet e alle operazioni di modifica o cancellazione  </p>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" 
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" 
+			integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
+			crossorigin="anonymous" />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            
+    </head>
+    <body>
+        <div th:style="'background:url(' + @{/static/loginBG.jpg}+');'">
+            <section class="pt-5 pb-5 mt-0 align-items-center d-flex bg-dark" style="min-height: 100vh; background-size: cover; ">
+                <div class="container-fluid">
+                <div class="row  justify-content-center align-items-center d-flex-row text-center h-100">
+                    <div class="col-12 col-md-4 col-lg-3   h-50 ">
+                    <div class="card shadow">
+                        <div class="card-body mx-auto">
+                        <h4 class="card-title mt-3 text-center">Login </h4>
+                        <form>
+                            <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                            </div>
+                            <input name="" class="form-control" placeholder="Email address" type="email">
+                            </div>
+                            <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            </div>
+                            <input class="form-control" placeholder="Insert password" type="password">
+                            </div>
+                            
+                            <div class="form-group">
+                            <button type="submit" class="btn  btn-block" style="background-color:#ab9eb5;"> Login </button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
                 </div>
+                </div>
+            </section>
         </div>
-
-        <span class="card-body">
-            <a th:href="@{/buffet}">
-                Buffets
-            </a>
-            <div>
-                <h4 class="card-title">Card Title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, perspiciatis.</p>
-            </div>
-        </span>
-        <span class="card-body"><a th:href="@{/piattoForm}">Inserisci Piatto</a></span>
-        <span class="card-body"><a th:href="@{/chefForm}">Inserisci Chef</a></span>
-        <span class="card-body"><a th:href="@{/ingredientiForm}">Inserisci Ingredienti</a></span>
-        <div><a th:href="@{/persona}"></a></div>
-    </div>
-</div>
+    </body>
+</html>
