@@ -1,38 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../templates/css/favicon.ico">
-
-    <title>Ingrediente</title>
-  </head>
+  <head th:replace="fragments/base.html::headerfiles"></head>
   <body>
-      <h2>Ingrediente Page</h2>
+    <header th:replace="fragments/base.html::intestazione">
+    </header>
+    <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x1100/?ingredients}" >
+    <div class="card-img-overlay">
+      
+      <h2 class="mt-5" style="text-align: center;color: rgb(224, 134, 49);font-family: Courgette;">Ingrediente Page</h2>
 
-      <div>
-          <div>
-            <span th:text="${ingrediente.nome}">
-              Paolo
-            </span>
-            <span th:text="${ingrediente.origine}">
-              Rossi
-            </span>
-            <span th:text="${ingrediente.descrizione}">
-              Rossi
-            </span>
-            <div>
-              <button type="button">
-                <a th:href="@{/deleteIngredienti(ingredienteId=${ingrediente.id})}">Elimina</a>
-              </button>
-              <button type="button">
-                <a th:href="@{/showUpdateForm(ingredienteId=${ingredienteid})}" class="btn btn-info">Update</a>
-              </button>
-            </div>
-          </div>
-      </div>
-      <footer><a href="/">Home</a></footer>
-  </body>
+    
+    <div class="jumbotron text-center" style="background-color:rgb(168, 181, 158,.7);">
+      <h1 class="display-4" style="color: rgb(0,0,0);text-transform: uppercase;" th:text="${ingrediente.nome}" >Welcome To My Website!</h1>
+      <p class="lead" style="color: rgb(0,0,0);" th:text="'di origine' + ' ' + ${ingrediente.origine} + ',' + ${ingrediente.descrizione}">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum necessitatibus perspiciatis cum vitae, modi hic?</p>
+      <hr>
+
+        <a class="btn btn-danger" role="button" th:href="@{/deleteIngredienti(ingredienteId=${ingrediente.id})}">
+          Elimina Ingrediente
+        </a>
+
+        <a class="btn btn-primary" role="button" th:href="@{/showUpdateForm(ingredienteId=${ingrediente.id})}" >
+          Update
+        </a>
+
+         
+    </div>
+
+    <br>
+
+    <a class="btn btn-block btn-outline-dark " role="button" th:href="@{/ingrediente/showPiattiToAdd(ingredienteId=${ingrediente.id})}">
+      Aggiungi un Buffet allo Chef
+     </a>
+
+  </div>
+    </div>
+    
+  <footer class="container fixed-bottom" >
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+</body>
 </html>
