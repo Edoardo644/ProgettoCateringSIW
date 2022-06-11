@@ -5,11 +5,13 @@
     </head>
 
     <body>
-        
-        <div class="container">
+        <header th:replace="fragments/base.html::intestazione"></header>
+        <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x1100/?buffet}" >
+        <div class="container card-img-overlay mt-4">
+
             <div class=" text-center mt-5 ">
         
-                <h1 >Inserimento Buffet</h1>
+                <h1 style="color: rgb(224, 134, 49);font-family: Courgette;" >Inserimento Buffet</h1>
             </div>
         
         
@@ -40,8 +42,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="form_message">Descrizione *</label>
-                                <textarea th:field="*{descr}" id="form_message" name="message" class="form-control" placeholder="Write your description here." rows="4" required="required" ></textarea
-                                    >
+                                <textarea th:field="*{descr}" id="form_message" name="message" class="form-control" placeholder="Write your description here." rows="4" required="required" >
+                                    </textarea>
                                     <span th:if="${#fields.hasErrors('descr')}" th:errors="*{descr}"></span>
                                 </div>
         
