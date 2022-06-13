@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.controller.validator.IngredienteValidator;
 import com.example.demo.model.Ingrediente;
+import com.example.demo.model.Piatto;
 import com.example.demo.service.IngredienteService;
+import com.example.demo.service.PiattoService;
 
 
 @Controller
@@ -26,6 +28,8 @@ public class IngredienteController {
 	IngredienteService ingredienteService;
 	@Autowired
 	IngredienteValidator ingredienteValidator;
+	@Autowired
+	PiattoService piattoService;
 	
 	
 	@PostMapping("/ingrediente")
@@ -53,6 +57,8 @@ public class IngredienteController {
 	@GetMapping("/ingredienteForm")
 	public String getIngredientiForm(Model model) {
 		model.addAttribute("ingrediente", new Ingrediente());
+		List<Piatto> piattiDisponibili =this.piattoService.findAllPiatti();
+		model.addAttribute("piattiDisponibili", piattiDisponibili);
 		return "ingredienteForm.html";
 	}
 
