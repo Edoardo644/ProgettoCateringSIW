@@ -51,7 +51,7 @@ public class BuffetController {
 	 * }
 	 */
 
-	@PostMapping("/buffet")
+	@PostMapping("/admin/buffet")
 	public String addBuffet(@Valid @ModelAttribute("buffet") Buffet b, BindingResult bindingResult, Model model) {
 		this.buffetValidator.validate(b, bindingResult);
 		if (!bindingResult.hasErrors()) {
@@ -73,7 +73,7 @@ public class BuffetController {
 	}
 
 
-	@GetMapping("/buffetForm")
+	@GetMapping("/admin/buffetForm")
 	public String getBuffetForm(Model model) {
 		model.addAttribute("buffet", new Buffet());
 		return "buffetForm.html";

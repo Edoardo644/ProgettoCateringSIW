@@ -6,7 +6,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.example.demo.model.Chef;
-import com.example.demo.model.Piatto;
 import com.example.demo.service.ChefService;
 
 

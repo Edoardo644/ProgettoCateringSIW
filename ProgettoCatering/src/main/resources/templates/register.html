@@ -1,0 +1,80 @@
+<html>
+    <head th:replace="fragments/base.html::headerfiles"></head>
+<body>
+	<div id="content">
+        <header th:replace="fragments/base.html::intestazione"></header>
+		<!--- MAIN -->
+		<div class="ct-flex-container">
+			<div class="ct-flex-auth">
+				<div class="box ct-auth-box">
+					<div class="column">
+						<form th:action="@{/registration}" method="POST">
+
+
+							<div class="container has-text-left mb-5">
+								<p class="title is-4">Ciao,<br>Registrati subito!</p>
+							</div>
+							<div class="field">
+								<div class="control has-icons-left">
+									<input class="input" type="text" th:field="${user.nome}" placeholder="Nome">
+									<span class="icon is-small is-left">
+										<i class="fas fa-user"></i>
+									</span>
+								</div>
+								<p class="has-text-left help is-danger" th:if="${#fields.hasErrors('user.nome')}"
+									th:errors="${user.nome}">Errore</p>
+
+							</div>
+							<div class="field">
+								<div class="control has-icons-left">
+									<input class="input" type="text" th:field="${user.cognome}" placeholder="Cognome">
+									<span class="icon is-small is-left">
+										<i class="fas fa-user"></i>
+									</span>
+								</div>
+								<p class="has-text-left help is-danger" th:if="${#fields.hasErrors('user.cognome')}"
+									th:errors="${user.cognome}">Errore</p>
+							</div>
+							<div class="field">
+								<div class="control has-icons-left">
+									<input class="input" type="text" th:field="${credentials.username}" required
+										placeholder="Username">
+									<span class="icon is-small is-left">
+										<i class="fas fa-user"></i>
+									</span>
+								</div>
+								<p class="has-text-left help is-danger"
+									th:if="${#fields.hasErrors('credentials.username')}"
+									th:errors="${credentials.username}">Errore</p>
+							</div>
+							<div class="field">
+								<div class="control has-icons-left">
+									<input class="input" type="password" th:field="${credentials.password}"
+										placeholder="Password" required>
+									<span class="icon is-small is-left">
+										<i class="fas fa-lock"></i>
+									</span>
+								</div>
+								<p class="has-text-left help is-danger"
+									th:if="${#fields.hasErrors('credentials.password')}"
+									th:errors="${credentials.password}">Errore</p>
+							</div>
+							<div class="field">
+								<div class="control">
+									<button type="submit"
+										class="button is-info is-fullwidth is-rounded">Registrati</button>
+								</div>
+							</div>
+						</form>
+						
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<footer th:replace="fragments/base.html :: footer"></footer>
+	</div>
+</body>
+
+</html>
