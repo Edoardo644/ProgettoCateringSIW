@@ -5,11 +5,11 @@
     </head>
 
     <body>
-        <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x1100/?meal}" >
+        <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x1100/?chef}" >
         <div class="container card-img-overlay">
             <div class=" text-center mt-5 ">
         
-                <h1 >Inserimento Piatto</h1>
+                <h1 >Inserimento Chef</h1>
             </div>
         
         
@@ -19,7 +19,7 @@
                 <div class="card-body bg-light">
            
                 <div class = "container">
-                <form id="contact-form" role="form" th:action="@{/admin/piatto}" method="POST" th:object="${piatto}">
+                <form id="contact-form" role="form" th:action="@{'/chefUpdate' + '/' + ${chef.id}}" method="POST" th:object="${chef}">
                     <div th:if="${#fields.hasGlobalErrors()}">
                         <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
                     </div>
@@ -31,26 +31,35 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_name">Nome *</label>
-                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome del piatto *" required="required" th:field="*{nome}" >
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome dello chef *" required="required" th:field="*{nome}" >
                                 <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_name">Cognome *</label>
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il cognome dello chef *" required="required" th:field="*{cognome}" >
+                                <span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="form_message">Descrizione *</label>
-                                <textarea th:field="*{descr}" id="form_message" name="message" class="form-control" placeholder="Write your description here." rows="4" required="required" ></textarea
-                                    >
-                                    <span th:if="${#fields.hasErrors('descr')}" th:errors="*{descr}"></span>
-                                </div>
-        
+                                <label for="form_name">Nazionalita *</label>
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci la nazionalita dello chef *" required="required" th:field="*{nazionalita}" >
+                                <span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></span>
                             </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
         
         
                         <div class="col-md-12">
                             
-                            <input type="submit" class="btn btn-success btn-send  pt-2 btn-block" value="Submit Piatto" >
+                            <input type="submit" class="btn btn-success btn-send  pt-2 btn-block" value="Submit Chef" >
                         
                     </div>
               

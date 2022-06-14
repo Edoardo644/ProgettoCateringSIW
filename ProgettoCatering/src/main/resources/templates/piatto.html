@@ -15,13 +15,9 @@
       <p class="lead" style="color: rgb(0,0,0);" th:text="${piatto.descr}">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum necessitatibus perspiciatis cum vitae, modi hic?</p>
       <hr>
 
-        <a class="btn btn-danger" role="button" th:href="@{/deletePiatti(piattoId=${piatto.id})}">
-          Elimina Buffet
-        </a>
+       
 
-        <a class="btn btn-primary" role="button" th:href="@{/showUpdateForm(piattoId=${piatto.id})}" >
-          Update
-        </a>
+       
 
          <div>
           <ul>
@@ -36,9 +32,8 @@
 
     <br>
 
-    <a class="btn btn-block btn-outline-dark " role="button" th:href="@{/piatto/showPiattiToAdd(piattoId=${piatto.id})}">
-      Aggiungi un Ingrediente al Piatto
-     </a>
+    
+     
 
   </div>
     </div>

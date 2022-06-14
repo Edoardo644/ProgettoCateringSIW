@@ -15,13 +15,9 @@
       <p class="lead" style="color: rgb(0,0,0);" th:text="${chef.nazionalita}">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum necessitatibus perspiciatis cum vitae, modi hic?</p>
       <hr>
 
-        <a class="btn btn-danger" role="button" th:href="@{/deleteChef(chefId=${chef.id})}">
-          Elimina Chef
-        </a>
+        
 
-        <a class="btn btn-primary" role="button" th:href="@{/showUpdateForm(chefId=${chef.id})}" >
-          Update
-        </a>
+        
 
          <div>
           <ul>
@@ -36,10 +32,7 @@
 
     <br>
 
-    <a class="btn btn-block btn-outline-dark " role="button" th:href="@{/chef/showPiattiToAdd(chefId=${chef.id})}">
-      Aggiungi un Buffet allo Chef
-     </a>
-
+  
   </div>
     </div>
     

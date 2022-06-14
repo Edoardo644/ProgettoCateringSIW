@@ -9,7 +9,7 @@
         <div class="container card-img-overlay">
             <div class=" text-center mt-5 ">
         
-                <h1 >Inserimento Piatto</h1>
+                <h1 >Modifica Piatto</h1>
             </div>
         
         
@@ -19,7 +19,7 @@
                 <div class="card-body bg-light">
            
                 <div class = "container">
-                <form id="contact-form" role="form" th:action="@{/admin/piatto}" method="POST" th:object="${piatto}">
+                <form id="contact-form" role="form" th:action="@{'/piattoUpdate' + '/' + ${piatto.id}}" method="POST" th:object="${piatto}">
                     <div th:if="${#fields.hasGlobalErrors()}">
                         <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
                     </div>

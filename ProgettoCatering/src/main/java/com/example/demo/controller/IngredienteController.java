@@ -32,7 +32,7 @@ public class IngredienteController {
 	PiattoService piattoService;
 	
 	
-	@PostMapping("/ingrediente")
+	@PostMapping("/admin/ingrediente")
 	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente i, BindingResult bindingResult, Model model) {
 		this.ingredienteValidator.validate(i, bindingResult);
 		if (!bindingResult.hasErrors()) {
@@ -54,7 +54,7 @@ public class IngredienteController {
 	}
 
 
-	@GetMapping("/ingredienteForm")
+	@GetMapping("/admin/ingredienteForm")
 	public String getIngredientiForm(Model model) {
 		model.addAttribute("ingrediente", new Ingrediente());
 		List<Piatto> piattiDisponibili =this.piattoService.findAllPiatti();
@@ -75,5 +75,26 @@ public class IngredienteController {
 		this.ingredienteService.rimuovi(ingredienteId);
 		return "redirect:/elencoIngredienti";
 	}
+	
+	@GetMapping("/admin/updateIngrediente")
+    public String updateIngredienteForm(@RequestParam Long ingredienteId, Model model) {
+        System.out.println("L'id dell'ingrediente: " + ingredienteId);
+        model.addAttribute("ingrediente", this.ingredienteService.searchById(ingredienteId));
+        return "ingredienteUpdateForm.html";
+    }
+
+	
+	@PostMapping("/ingredienteUpdate/{id}")
+    public String updateIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, Model model) {
+        this.ingredienteValidator.validate(ingrediente, bindingResult);
+        if(!bindingResult.hasErrors()) {
+            this.ingredienteService.inserisci(ingrediente);
+            model.addAttribute("ingrediente", ingrediente);
+            return "ingrediente.html";
+        }
+        else {
+            return "ingredienteUpdateForm.html";
+        }
+    }
 
 }

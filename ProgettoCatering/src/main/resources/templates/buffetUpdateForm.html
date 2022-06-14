@@ -5,11 +5,13 @@
     </head>
 
     <body>
-        <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x1100/?meal}" >
-        <div class="container card-img-overlay">
+        <header th:replace="fragments/base.html::intestazione"></header>
+        <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x1100/?buffet}" >
+        <div class="container card-img-overlay mt-4">
+
             <div class=" text-center mt-5 ">
         
-                <h1 >Inserimento Piatto</h1>
+                <h1 style="color: rgb(224, 134, 49);font-family: Courgette;" >Inserimento Buffet</h1>
             </div>
         
         
@@ -19,7 +21,7 @@
                 <div class="card-body bg-light">
            
                 <div class = "container">
-                <form id="contact-form" role="form" th:action="@{/admin/piatto}" method="POST" th:object="${piatto}">
+                <form id="contact-form" role="form" th:action="@{'/buffetUpdate' + '/' + ${buffet.id}}" method="POST" th:object="${buffet}">
                     <div th:if="${#fields.hasGlobalErrors()}">
                         <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
                     </div>
@@ -31,7 +33,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_name">Nome *</label>
-                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome del piatto *" required="required" th:field="*{nome}" >
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome del buffet *" required="required" th:field="*{nome}" >
                                 <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
                             </div>
                         </div>
@@ -40,8 +42,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="form_message">Descrizione *</label>
-                                <textarea th:field="*{descr}" id="form_message" name="message" class="form-control" placeholder="Write your description here." rows="4" required="required" ></textarea
-                                    >
+                                <textarea th:field="*{descr}" id="form_message" name="message" class="form-control" placeholder="Write your description here." rows="4" required="required" >
+                                    </textarea>
                                     <span th:if="${#fields.hasErrors('descr')}" th:errors="*{descr}"></span>
                                 </div>
         
@@ -50,7 +52,8 @@
         
                         <div class="col-md-12">
                             
-                            <input type="submit" class="btn btn-success btn-send  pt-2 btn-block" value="Submit Piatto" >
+                            <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
+                                " value="Submit Buffet" >
                         
                     </div>
               

@@ -15,22 +15,16 @@
       <p class="lead" style="color: rgb(0,0,0);" th:text="'di origine' + ' ' + ${ingrediente.origine} + ',' + ${ingrediente.descrizione}">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum necessitatibus perspiciatis cum vitae, modi hic?</p>
       <hr>
 
-        <a class="btn btn-danger" role="button" th:href="@{/deleteIngredienti(ingredienteId=${ingrediente.id})}">
-          Elimina Ingrediente
-        </a>
+      
 
-        <a class="btn btn-primary" role="button" th:href="@{/showUpdateForm(ingredienteId=${ingrediente.id})}" >
-          Update
-        </a>
+        
 
          
     </div>
 
     <br>
 
-    <a class="btn btn-block btn-outline-dark " role="button" th:href="@{/ingrediente/showPiattiToAdd(ingredienteId=${ingrediente.id})}">
-      Aggiungi un Buffet allo Chef
-     </a>
+    
 
   </div>
     </div>

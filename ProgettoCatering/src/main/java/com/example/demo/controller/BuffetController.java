@@ -31,25 +31,7 @@ public class BuffetController {
 	
 	Buffet buffetAppoggio = new Buffet();
 
-	/*
-	 * ovviamente non ci sono solo le pagine per il piatto e il piatto form quindi
-	 * poi andranno modificati i return e il path su cui trovare questa richiesta
-	 * 
-	 * @PostMapping("/buffet")
-	 * //modelAttribute serve per associare questo oggetto con quello col nome
-	 * specificato dentro il modello
-	 * public String addBuffet(@Valid @ModelAttribute("buffet") Buffet
-	 * b,BindingResult bindingResult,Model model){
-	 * if(!bindingResult.hasErrors()) {
-	 * this.buffetService.inserisci(b);
-	 * model.addAttribute("buffet", model);
-	 * return "buffet.html";
-	 * 
-	 * }else {
-	 * return "buffetForm.html";
-	 * }
-	 * }
-	 */
+	
 
 	@PostMapping("/admin/buffet")
 	public String addBuffet(@Valid @ModelAttribute("buffet") Buffet b, BindingResult bindingResult, Model model) {
@@ -94,14 +76,6 @@ public class BuffetController {
 		return "redirect:/elencoBuffet";
 	}
 
-//	//Richiede tutti i piatti relativi a un buffet
-//	@GetMapping("/elencoPiatti")
-//	public String getAllPiattiFromBuffet(Model model) {
-//		List<Piatto> elencoPiatti = this.buffetService.findAllBuffet();
-//		model.addAttribute("elencoPiatti", elencoPiatti);
-//		return "elencoBuffet.html";
-//	}
-
 
 	@PostMapping("/buffet/addPiattoABuffet")
 	public String addPiattoABuffet(@RequestParam Long piattoId) {
@@ -118,30 +92,29 @@ public class BuffetController {
 		return "piattiToAdd.html";
 	}
 	
+	@GetMapping("/admin/updateBuffet")
+    public String updateBuffetForm(@RequestParam Long buffetId, Model model) {
+        System.out.println("L'id del buffet: " + buffetId);
+        model.addAttribute("buffet", this.buffetService.searchById(buffetId));
+        return "buffetUpdateForm.html";
+    }
 
-	/*
-	@GetMapping("/showUpdateForm")
-	public String showUpdateForm(@RequestParam Long buffetId, Model model) {
-		model.addAttribute("buffet", this.buffetService.searchById(buffetId));
-		return "updateBuffetForm.html";
-	}
+	
+	@PostMapping("/buffetUpdate/{id}")
+    public String updateBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResult, Model model) {
+        this.buffetValidator.validate(buffet, bindingResult);
+        if(!bindingResult.hasErrors()) {
+            this.buffetService.inserisci(buffet);
+            model.addAttribute("buffet", buffet);
+            return "buffet.html";
+        }
+        else {
+            return "buffetUpdateForm.html";
+        }
+    }
+	
 
 
-	@PostMapping("/updateBuffet")
-	public String addUpdateBuffet(@Valid @ModelAttribute("buffet") Buffet b, BindingResult bindingResult, Model model) {
-		this.buffetValidator.validate(b, bindingResult);
-		if (!bindingResult.hasErrors()) {
-			Buffet updatedBuffet = new Buffet();
-			updatedBuffet.setDescr(this.buffetService.searchById(b.getId()).getDescr());
-			updatedBuffet.setNome(this.buffetService.searchById(b.getId()).getNome());
-			this.buffetService.inserisci(updatedBuffet);
-			model.addAttribute("buffet",updatedBuffet);
-			return "buffet.html";
-
-		} else {
-			return "buffetForm.html";
-		}
-	}*/
 
 
 }

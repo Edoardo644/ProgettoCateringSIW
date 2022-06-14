@@ -26,22 +26,9 @@ public class ChefController {
 	@Autowired
 	ChefValidator chefValidator;
 	
-	/* ovviamente non ci sono solo le pagine per il piatto e il piatto form quindi poi andranno modificati i return e il path su cui trovare questa richiesta
-	@PostMapping("/chef")
-	//modelAttribute serve per associare questo oggetto con quello col nome specificato dentro il modello
-	public String addChef(@Valid @ModelAttribute("chef") Chef c,BindingResult bindingResult,Model model){
-		if(!bindingResult.hasErrors()) {
-			this.chefService.inserisci(c);
-			model.addAttribute("chef", model);
-			return "chef.html";
-			
-		}else {
-			return "chefForm.html";
-		}
-	}*/
 	
 
-	@PostMapping("/chef")
+	@PostMapping("/admin/chef")
 	public String addChef(@Valid @ModelAttribute("chef") Chef c, BindingResult bindingResult, Model model) {
 		this.chefValidator.validate(c, bindingResult);
 		if (!bindingResult.hasErrors()) {
@@ -63,7 +50,7 @@ public class ChefController {
 	}
 
 
-	@GetMapping("/chefForm")
+	@GetMapping("/admin/chefForm")
 	public String getChefForm(Model model) {
 		model.addAttribute("chef", new Chef());
 		return "chefForm.html";
@@ -83,4 +70,26 @@ public class ChefController {
 		this.chefService.rimuovi(chefId);
 		return "redirect:/elencoChef";
 	}
+	
+	@GetMapping("/admin/updateChef")
+    public String updateChefForm(@RequestParam Long chefId, Model model) {
+        System.out.println("L'id dello chef: " + chefId);
+        model.addAttribute("chef", this.chefService.searchById(chefId));
+        return "chefUpdateForm.html";
+    }
+
+	
+	@PostMapping("/chefUpdate/{id}")
+    public String updateChef(@Valid @ModelAttribute("chef") Chef chef, BindingResult bindingResult, Model model) {
+        this.chefValidator.validate(chef, bindingResult);
+        if(!bindingResult.hasErrors()) {
+            this.chefService.inserisci(chef);
+            model.addAttribute("chef", chef);
+            return "chef.html";
+        }
+        else {
+            return "chefUpdateForm.html";
+        }
+    }
+	
 }

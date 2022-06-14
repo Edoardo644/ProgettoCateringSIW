@@ -3,8 +3,10 @@
     <head th:replace="fragments/base.html::headerfiles"></head>
     <body>
         <header th:replace="fragments/base.html::intestazione"></header>
-        <a class="btn btn-outline btn-block my-2 my-sm-0 active" style="background-color:#4bbdda;" th:href="@{/admin/buffetForm}" >
-            Aggiungi un Buffet!
-        </a>
+        <p class="d-flex justify-content-center">Accesso come amministratore riuscito!</p>
+        <div class="d-flex justify-content-center align-items-center" >
+            <a class="btn btn-success " th:href="@{/admin/features}">Clicca qui per accedere alle features!</a>
+        </div>
+      
     </body>
 </html>

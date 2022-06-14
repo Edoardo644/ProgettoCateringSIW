@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,14 +11,25 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.controller.validator.CredentialsValidator;
 import com.example.demo.controller.validator.UserValidator;
+import com.example.demo.model.Buffet;
+import com.example.demo.model.Chef;
 import com.example.demo.model.Credentials;
+import com.example.demo.model.Ingrediente;
+import com.example.demo.model.Piatto;
 import com.example.demo.model.User;
+import com.example.demo.service.BuffetService;
+import com.example.demo.service.ChefService;
 import com.example.demo.service.CredentialsService;
+import com.example.demo.service.IngredienteService;
+import com.example.demo.service.PiattoService;
 
 @Controller
+
 public class AuthenticationController {
 	
 	@Autowired
@@ -28,6 +41,17 @@ public class AuthenticationController {
 	@Autowired
 	private CredentialsValidator credentialsValidator;
 	
+	@Autowired
+	PiattoService ps;
+	@Autowired
+	BuffetService bs;
+	@Autowired
+	IngredienteService is;
+	@Autowired
+	ChefService cs;
+	
+	
+	
 	@GetMapping("/register") 
 	public String showRegisterForm(Model model) {
 		model.addAttribute("user", new User());
@@ -35,7 +59,7 @@ public class AuthenticationController {
 		return "register.html";
 	}
 	
-	@GetMapping("/getLogin") 
+	@GetMapping("/login") 
 	public String showLoginForm (Model model) {
 		return "accessoAmministratore.html";
 	}
@@ -46,18 +70,31 @@ public class AuthenticationController {
 		return "index";
 	}
 	
-	@GetMapping("/default")
-    public String defaultAfterLogin(Model model) {
-        
-    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-            return "adminPage.html";
-        }
-        return "index.html";
-    }
+	@GetMapping("/admin/features")
+	public String features(Model model) {
+		List<Buffet> elencoBuffet = this.bs.findAllBuffet();
+		List<Piatto> elencoPiatti = this.ps.findAllPiatti();
+		List<Chef> elencoChef = this.cs.findAllChef();
+		List<Ingrediente> elencoIngredienti = this.is.findAllIngredienti();
+		model.addAttribute("elencoBuffet", elencoBuffet);
+		model.addAttribute("elencoPiatti", elencoPiatti);
+		model.addAttribute("elencoChef", elencoChef);
+		model.addAttribute("elencoIngredienti", elencoIngredienti);
+		return "adminFeatures.html";
+	}
 	
-    @PostMapping("/registration")
+	
+    @RequestMapping(value = "/default", method = RequestMethod.GET)
+    public String defaultAfterLogin(Model model) {
+    	UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			return "adminPage.html";
+		}
+		return "index";
+	}
+	
+    @PostMapping("/register")
     public String registerUser(@ModelAttribute("user") User user,
                  BindingResult userBindingResult,
                  @ModelAttribute("credentials") Credentials credentials,

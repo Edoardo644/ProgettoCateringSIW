@@ -3,6 +3,8 @@ package com.example.demo.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +15,7 @@ import com.example.demo.repository.CredentialsRepository;
 @Service
 public class CredentialsService {
 	
-    @Autowired
+	@Autowired
     protected PasswordEncoder passwordEncoder;
 
 	@Autowired
@@ -37,4 +39,7 @@ public class CredentialsService {
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return this.credentialsRepository.save(credentials);
     }
+    
+    
+    
 }
