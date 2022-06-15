@@ -15,6 +15,14 @@
       <p class="lead" style="color: rgb(0,0,0);" th:text="'di origine' + ' ' + ${ingrediente.origine} + ',' + ${ingrediente.descrizione}">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum necessitatibus perspiciatis cum vitae, modi hic?</p>
       <hr>
 
+      <div class="card bg-light col-6 my-5 ml-3">
+        <div class="card-body d-flex flex-row align-items-center justify-content-between" th:if="${ingrediente.piatto}" th:object="${ingrediente.piatto}">
+            <div><h4 class="colorTitles d-inline">Piatto: </h4><h4 class="d-inline" th:text="*{nome}">Piatto</h4></div>
+            <a href="piatto.html" class ="link btn btn-success"
+            th:href="@{'/piatto' + '/' + *{id}}">Dettagli</a>
+        </div>
+        <h4 th:unless="${ingrediente.piatto}" class="p-3">Nessun buffet assegnato</h4>
+    </div>
       
 
         
@@ -29,9 +37,6 @@
   </div>
     </div>
     
-  <footer class="container fixed-bottom" >
-    <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
+    <footer th:replace="fragments/base.html::footer"></footer>
 </body>
 </html>

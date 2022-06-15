@@ -46,6 +46,21 @@
                                 </div>
         
                             </div>
+
+                            <!--<div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label for="form_name">Seleziona buffet</label>
+                                    <div th:if="${buffetDisponibili}">
+                                        <select class="form-select" name="buffetScelto" aria-label="Default select example">
+                                            <option th:each="buffet : ${buffetDisponibili}" th:value="${buffet.id}"><span
+                                                    th:text="${buffet.nome}">Nome Buffet</span></option>
+                                        </select>
+                                    </div>
+                                    <div th:unless="${buffetDisponibili}">
+                                        <div class="notification p-3 is-danger">Nessun Buffet disponibile!</div>
+                                    </div>
+                                </div>
+                            </div>-->
         
         
                         <div class="col-md-12">

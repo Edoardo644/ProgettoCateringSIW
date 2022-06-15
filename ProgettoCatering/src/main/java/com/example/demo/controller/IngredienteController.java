@@ -31,18 +31,24 @@ public class IngredienteController {
 	@Autowired
 	PiattoService piattoService;
 	
-	
+	//aggiunta dell'ingrediente nel modello
 	@PostMapping("/admin/ingrediente")
-	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente i, BindingResult bindingResult, Model model) {
+	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente i, BindingResult bindingResult, @RequestParam(name = "piattoScelto") Long id, Model model) {
+		
 		this.ingredienteValidator.validate(i, bindingResult);
+		
 		if (!bindingResult.hasErrors()) {
-			this.ingredienteService.inserisci(i);
-			model.addAttribute("ingrediente", this.ingredienteService.searchById(i.getId()));
+			Piatto p = this.piattoService.searchById(id);
+			i.setPiatto(p);
+			p.getIngredientiDelPiatto().add(i);
+			this.piattoService.inserisci(p);
+			model.addAttribute("ingrediente", i);
 			return "ingrediente.html";
 
-		} else {
-			return "ingredienteForm.html";
-		}
+		} 
+		model.addAttribute("ingrediente", i);
+		return "ingredienteForm.html";
+		
 	}
 
 	// Richiede tutti gli ingredienti
@@ -53,16 +59,15 @@ public class IngredienteController {
 		return "elencoIngredienti.html";
 	}
 
-
+	//creazione di un nuovo ingrediente e ritorno del form
 	@GetMapping("/admin/ingredienteForm")
 	public String getIngredientiForm(Model model) {
 		model.addAttribute("ingrediente", new Ingrediente());
-		List<Piatto> piattiDisponibili =this.piattoService.findAllPiatti();
-		model.addAttribute("piattiDisponibili", piattiDisponibili);
+		model.addAttribute("piattiDisponibili", this.piattoService.findAllPiatti());
 		return "ingredienteForm.html";
 	}
 
-
+	//torna la pagina dedicata all'ingrediente con il determinato id
 	@GetMapping("/ingrediente/{id}")
 	public String getIngrediente(@PathVariable("id") Long id, Model model){
 		Ingrediente ingrediente = this.ingredienteService.searchById(id);
@@ -70,12 +75,14 @@ public class IngredienteController {
 		return "ingrediente.html";
 	}
 
+	//cancellazione ingrediente
 	@GetMapping("/deleteIngredienti")
 	public String deleteIngredienti(@RequestParam Long ingredienteId) {
 		this.ingredienteService.rimuovi(ingredienteId);
 		return "redirect:/elencoIngredienti";
 	}
 	
+	//aggiornamento dell'ingrediente tramite form
 	@GetMapping("/admin/updateIngrediente")
     public String updateIngredienteForm(@RequestParam Long ingredienteId, Model model) {
         System.out.println("L'id dell'ingrediente: " + ingredienteId);
@@ -83,7 +90,7 @@ public class IngredienteController {
         return "ingredienteUpdateForm.html";
     }
 
-	
+	//modifica effettiva dell'ingrediente con il determinato id
 	@PostMapping("/ingredienteUpdate/{id}")
     public String updateIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, Model model) {
         this.ingredienteValidator.validate(ingrediente, bindingResult);

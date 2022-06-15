@@ -7,7 +7,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
@@ -19,14 +18,13 @@ public class Buffet {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	
-	
 	@NotBlank
 	private String nome;
+	
 	@NotBlank
 	private String descr;
 	
-	@OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
-	@JoinColumn(name = "piattiDelBuffet")
+	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy="buffet")
 	private List<Piatto> listaPiatti;
 	
 	@ManyToOne

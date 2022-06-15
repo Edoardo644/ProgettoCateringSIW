@@ -70,6 +70,21 @@
                                     </div>
                                 </div>
                             </div>-->
+
+                            <div class="col-12 mt-3">
+                                <div class="form-group">
+                                    <label for="form_name">Seleziona Piatto</label>
+                                    <div th:if="${piattiDisponibili}">
+                                        <select class="form-select" name="piattoScelto" aria-label="Default select example">
+                                            <option th:each="piatto : ${piattiDisponibili}" th:value="${piatto.id}"><span
+                                                    th:text="${piatto.nome}">Nome Piatto</span></option>
+                                        </select>
+                                    </div>
+                                    <div th:unless="${piattiDisponibili}">
+                                        <div class="notification p-3 is-danger">Nessun Piatto disponibile!</div>
+                                    </div>
+                                </div>
+                            </div>
         
         
                         <div class="col-md-12">

@@ -27,13 +27,14 @@ public class ChefController {
 	ChefValidator chefValidator;
 	
 	
-
+	//aggiunta dello chef nel modello
 	@PostMapping("/admin/chef")
 	public String addChef(@Valid @ModelAttribute("chef") Chef c, BindingResult bindingResult, Model model) {
 		this.chefValidator.validate(c, bindingResult);
 		if (!bindingResult.hasErrors()) {
 			this.chefService.inserisci(c);
 			model.addAttribute("chef", this.chefService.searchById(c.getId()));
+			model.addAttribute("elencoBuffet", c.getBuffetDelloChef());
 			return "chef.html";
 
 		} else {
@@ -41,7 +42,7 @@ public class ChefController {
 		}
 	}
 
-	// Richiede tutti i piatti
+	// Richiede tutti gli chef
 	@GetMapping("/elencoChef")
 	public String getAllChef(Model model) {
 		List<Chef> elencoChef = this.chefService.findAllChef();
@@ -49,28 +50,30 @@ public class ChefController {
 		return "elencoChef.html";
 	}
 
-
+	//creazione di un nuovo chef e ritorno del form
 	@GetMapping("/admin/chefForm")
 	public String getChefForm(Model model) {
 		model.addAttribute("chef", new Chef());
 		return "chefForm.html";
 	}
-
-
+	
+	//torna la pagina dedicata allo chef con il determinato id
 	@GetMapping("/chef/{id}")
 	public String getChef(@PathVariable("id") Long id, Model model){
 		Chef chef = this.chefService.searchById(id);
 		model.addAttribute("chef", chef);
-		model.addAttribute("elencoChef", chef.getBuffetDelloChef());
+		model.addAttribute("elencoBuffet", chef.getBuffetDelloChef());
 		return "chef.html";
 	}
 
+	//cancellazione chef
 	@GetMapping("/deleteChef")
 	public String deleteChef(@RequestParam Long chefId) {
 		this.chefService.rimuovi(chefId);
 		return "redirect:/elencoChef";
 	}
 	
+	//aggiornamento dello chef tramite form
 	@GetMapping("/admin/updateChef")
     public String updateChefForm(@RequestParam Long chefId, Model model) {
         System.out.println("L'id dello chef: " + chefId);
@@ -78,7 +81,7 @@ public class ChefController {
         return "chefUpdateForm.html";
     }
 
-	
+	//modifica effettiva dello chef con il determinato id
 	@PostMapping("/chefUpdate/{id}")
     public String updateChef(@Valid @ModelAttribute("chef") Chef chef, BindingResult bindingResult, Model model) {
         this.chefValidator.validate(chef, bindingResult);

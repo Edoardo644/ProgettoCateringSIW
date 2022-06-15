@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -16,12 +17,25 @@ public class Piatto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	
+	//senza cascade all dà problemi nella creazione dell'oggetto stesso
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy ="piatto")
 	private List<Ingrediente> ingredientiDelPiatto;
 	
 	private String nome;
+	
 	private String descr;
 	
+	@ManyToOne
+	private Buffet buffet;
+	
+	
+	public Buffet getBuffet() {
+		return buffet;
+	}
+	public void setBuffet(Buffet buffet) {
+		this.buffet = buffet;
+	}
 	public Long getId() {
 		return Id;
 	}

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Ingrediente {
@@ -12,10 +13,19 @@ public class Ingrediente {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	
+	@ManyToOne
+	private Piatto piatto;
 	
 	private String nome;
 	private String origine;
 	private String descrizione;
+	
+	public Piatto getPiatto() {
+		return piatto;
+	}
+	public void setPiatto(Piatto piatto) {
+		this.piatto = piatto;
+	}
 	
 	public String getNome() {
 		return nome;

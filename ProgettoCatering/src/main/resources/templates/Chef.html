@@ -19,15 +19,22 @@
 
         
 
-         <div>
-          <ul>
-            <li th:each="buffet : ${elencoBuffetChef}">
-              <a href="buffet.html" class ="link"
-                th:href="@{'/buffet' + '/' + ${buffet.id}}"
-                th:text="${buffet.nome} + ' ' + ${buffet.descr}">Buffet</a>
-            </li>
-          </ul>
-        </div>
+      <ul class="list-group">
+        <li th:each="buffet : ${elencoBuffet}" class="list-group-item btn" >	
+            <div>
+              <div class="card m-5">
+                <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x300/?food}" >
+                <div class="card-img-overlay" >
+                  <h3 class="card-title color-titles d-flex justify-content-center rounded-pill " th:text="${buffet.nome}" style="color: rgb(224, 134, 49);font-family: Courgette;background-color: rgba(255, 253, 208,.8);"><strong>Buffet</strong></h3>
+                  <!--<p class="card-text" style="color: white;font-family: Indie Flower;" th:text="${buffet.descr}">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+                  <a href="buffet.html" class ="link btn mt-8" style="background-color:#ab9eb5;"
+                  th:href="@{'/buffet' + '/' + ${buffet.id}}">Dettagli</a>
+                </div>
+              </div>
+            </div>
+            
+        </li>
+      </ul>
     </div>
 
     <br>
@@ -36,9 +43,6 @@
   </div>
     </div>
     
-  <footer class="container fixed-bottom" >
-    <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
+    <footer th:replace="fragments/base.html::footer"></footer>
 </body>
 </html>
