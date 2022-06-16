@@ -14,27 +14,23 @@
       <h1 class="display-4" style="color: rgb(0,0,0);text-transform: uppercase;" th:text="${chef.nome} + ' ' + ${chef.cognome}" >Welcome To My Website!</h1>
       <p class="lead" style="color: rgb(0,0,0);" th:text="${chef.nazionalita}">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum necessitatibus perspiciatis cum vitae, modi hic?</p>
       <hr>
-
-        
-
-        
-
-      <ul class="list-group">
-        <li th:each="buffet : ${elencoBuffet}" class="list-group-item btn" >	
-            <div>
-              <div class="card m-5">
-                <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x300/?food}" >
-                <div class="card-img-overlay" >
-                  <h3 class="card-title color-titles d-flex justify-content-center rounded-pill " th:text="${buffet.nome}" style="color: rgb(224, 134, 49);font-family: Courgette;background-color: rgba(255, 253, 208,.8);"><strong>Buffet</strong></h3>
-                  <!--<p class="card-text" style="color: white;font-family: Indie Flower;" th:text="${buffet.descr}">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>-->
-                  <a href="buffet.html" class ="link btn mt-8" style="background-color:#ab9eb5;"
-                  th:href="@{'/buffet' + '/' + ${buffet.id}}">Dettagli</a>
+      
+      <h3 class="d-flex justify-content-center" style="color: rgb(24, 23, 23) ;">Buffet di questo Chef:</h3>
+            <div class="d-flex flex-row flex-wrap ">
+              <div class="col-4" th:each="buffet : ${elencoBuffet}" >
+                <div class="card m-3" style="background-color: rgba(255, 253, 208);" >
+                  <div class="d-flex card-body justify-content-between">
+                    <h3 class="d-inline " th:text="${buffet.nome}" style="color: rgb(224, 134, 49);font-family: Courgette;"><strong>Buffet</strong></h3>
+                    <!--<p class="card-text" style="color: white;font-family: Indie Flower;" th:text="${buffet.descr}">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>-->
+                    <a href="buffet.html" class ="link btn mt-8" style="background-color:#ab9eb5;"
+                    th:href="@{'/buffet' + '/' + ${buffet.id}}">Dettagli</a>
+                  </div>
+                 
                 </div>
               </div>
             </div>
             
-        </li>
-      </ul>
+
     </div>
 
     <br>

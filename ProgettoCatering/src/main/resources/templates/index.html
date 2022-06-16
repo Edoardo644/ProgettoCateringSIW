@@ -17,8 +17,8 @@
             <img class="first-slide" th:src="@{https://source.unsplash.com/random/1920x500/?buffet}" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <h1>Registrati Subito</h1>
+                <p>Avrai la possibilità di navigare liberamente per il sito.</p>
                 <p class="opacity-50"><a class=" buttons btn btn-lg btn-outline" th:href="@{/register}" role="button">Sign up today</a></p>
               </div>
             </div>
@@ -27,8 +27,8 @@
             <img class="second-slide" th:src="@{https://source.unsplash.com/random/1920x500/?dishes}" alt="Second slide">
             <div class="container">
               <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <h1>I nostri Chef</h1>
+                <p>Vedi subito tutti gli chef qualificati e le loro creazioni</p>
                 <p><a class="btn btn-lg btn-secondary buttons" th:href="@{/elencoChef}" role="button">Learn more</a></p>
               </div>
             </div>
@@ -37,9 +37,9 @@
             <img class="third-slide" th:src="@{https://source.unsplash.com/random/1920x500/?catering}" alt="Third slide">
             <div class="container">
               <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-outline-secondary buttons" th:href="@{/elencoPiatti}" role="button">Browse gallery</a></p>
+                <h1>Le nostre Opzioni</h1>
+                <p>Vedi subito tutte le opzioni culinarie a tua disposizione</p>
+                <p><a class="btn btn-lg btn-outline-secondary buttons" th:href="@{/elencoPiatti}" role="button">Learn More</a></p>
               </div>
             </div>
           </div>
@@ -65,19 +65,20 @@
           <div class="col-lg-4">
             <img class="rounded-circle" th:src="@{/images/Giorgione.jpg}" alt="Generic placeholder image" width="140" height="140">
             <h2>Giorgione</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p>Giorgio Barchiesi (detto Giorgione) è grande e grosso, dal carattere aperto e sensibile come un vero compagno di avventure. Nel suo orto coltiva di tutto, alleva animali di ogni tipo e cucina come si deve.
+             Classe ’57, romano atipico, umbro di adozione, Giorgio oggi cucina con passione nella sua locanda ricette semplici, gustose e facili da eseguire.</p>
             <p><a class="btn btn-secondary" href="http://www.ristoranteallaviadimezzo.it/" target="_blank" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" th:src="@{/images/ChefAndreRush.jpg}" alt="Generic placeholder image" width="140" height="140">
             <h2>Andre</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p>Chef Rush è un ex-militare americano che ah deciso di sollevarsi dai suoi incarichi per dedicarsi alla cucina. È un famoso chef, sommelier e intagliatore di ghiaccio. Servire i suoi ospiti permette a Chef Rush di ispirare gli altri attraverso le loro papille gustative. Ama creare antipasti e dessert appetitosi per "stupire" i suoi clienti.</p>
             <p><a class="btn btn-secondary" href="https://chefrush.com/" target="_blank" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" th:src="@{/images/chefRubio2.jpg}" alt="Generic placeholder image" width="140" height="140">
             <h2>Gabriele</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p>Chef Rubio è un cuoco non-convenzionale, indipendente, che per scelta non ha un suo ristorante ma è un insaziabile viaggiatore, oltre che un convinto attivista per i diritti umani e sostenitore della causa palestinese.Con un linguaggio unico e uno stile personale inconfondibile, Rubio in poco tempo si è affermato in TV come l’antichef rude e tatuato che conquista tutti per competenza e originalità.</p>
             <p><a class="btn btn-secondary" href="http://www.chefrubio.it/" target="_blank" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
@@ -90,7 +91,7 @@
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">I nostri Piatti! <br><span class="text-muted">It'll blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <p class="lead">Piatti gustosi preparati dai migliori Chef in circolazione.</p>
           </div>
           <div class="col-md-5">
             <img class="featurette-image img-fluid mx-auto" th:src="@{/images/Piatto1.jpg}" alt="Generic placeholder image">
@@ -101,8 +102,8 @@
 
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">I nostri Ingredienti! <br><span class="text-muted">See for yourself.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <h2 class="featurette-heading">I nostri Ingredienti! <br><span class="text-muted">Qualità prima di tutto</span></h2>
+            <p class="lead">Utilizziamo solo Ingredienti freschi e di prima qualità per i nostri prodotti</p>
           </div>
           <div class="col-md-5 order-md-1">
             <img class="featurette-image img-fluid mx-auto" th:src="@{/images/Ingrediente3.jpg}" alt="Generic placeholder image">
@@ -113,8 +114,8 @@
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">I nostri Buffet! <br> <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <h2 class="featurette-heading">I nostri Buffet! <br> <span class="text-muted"></span></h2>
+            <p class="lead">Buffet organizzati dai migliori professionisti con piatti di alta qualità </p>
           </div>
           <div class="col-md-5">
             <img class="featurette-image img-fluid mx-auto" th:src="@{/images/Buffet4.jpg}" alt="Generic placeholder image">

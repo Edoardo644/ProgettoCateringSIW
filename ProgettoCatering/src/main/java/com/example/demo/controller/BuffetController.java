@@ -32,7 +32,6 @@ public class BuffetController {
 	@Autowired
 	ChefService chefService;
 	
-	Buffet buffetAppoggio = new Buffet();
 
 	
 /*

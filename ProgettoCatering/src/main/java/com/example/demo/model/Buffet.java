@@ -3,7 +3,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +23,7 @@ public class Buffet {
 	@NotBlank
 	private String descr;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy="buffet")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="buffet")
 	private List<Piatto> listaPiatti;
 	
 	@ManyToOne

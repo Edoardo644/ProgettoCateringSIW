@@ -3,7 +3,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +18,7 @@ public class Piatto {
 	
 	
 	//senza cascade all dà problemi nella creazione dell'oggetto stesso
-	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy ="piatto")
+	@OneToMany( cascade = {CascadeType.ALL}, mappedBy ="piatto")
 	private List<Ingrediente> ingredientiDelPiatto;
 	
 	private String nome;
